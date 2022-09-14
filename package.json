@@ -7,6 +7,19 @@
   "author": "Yash Agrawal <yashagrawal2299@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "prepare": "husky install",
+    "remove:cache": "rm -rf cache",
+    "remove:artifacts": "rm -rf artifacts",
+    "remove:typechain-types": "rm -rf typechain-types",
+    "remove:all": "npm run remove:artifacts && npm run remove:cache && npm run remove:typechain-types",
+    "clean": "npm run remove:all && hardhat clean",
+    "solhint:check": "solhint **/*.sol",
+    "pretty-quick:all": "pretty-quick --staged --pattern 'contracts/**/*.sol' --pattern 'scripts/**/*.ts' --pattern 'test/**/*.ts'",
+    "pre-commit": "npm run pretty-quick:all && npm run solhint:check",
+    "compile": "npm run clean && hardhat compile"
+  },
+  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
@@ -42,5 +55,17 @@
     "tslint-plugin-prettier": "^2.3.0",
     "typechain": "^8.1.0",
     "typescript": ">=4.5.0"
-  }
+  },
+  "contributors": [
+    "Yash Agrawal <yashagrawal2299@gmail.com>"
+  ],
+  "keywords": [
+    "protocol",
+    "v0",
+    "poc",
+    "smart-contracts",
+    "defi",
+    "nfts",
+    "strategies"
+  ]
 }
